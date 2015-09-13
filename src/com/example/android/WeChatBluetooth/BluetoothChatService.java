@@ -1,5 +1,5 @@
 
-package com.example.android.BluetoothChat;
+package com.example.android.WeChatBluetooth;
 
 import java.io.IOException;
 import java.io.InputStream;

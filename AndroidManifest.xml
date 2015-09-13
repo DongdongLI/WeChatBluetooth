@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     
     <application android:icon="@android:drawable/btn_plus" android:label="@string/app_name">
-        <activity android:name=".ChatActivity"
+        <activity android:name="com.example.android.WeChatBluetooth.ChatActivity"
                   android:label="@string/app_name"
                    android:configChanges="orientation|keyboardHidden">
             <intent-filter>
@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity android:name=".DeviceListActivity"
+         <activity android:name="com.example.android.WeChatBluetooth.DeviceListActivity"
                   android:label="@string/select_device"
                   android:theme="@android:style/Theme.Dialog"
                   android:configChanges="orientation|keyboardHidden" />

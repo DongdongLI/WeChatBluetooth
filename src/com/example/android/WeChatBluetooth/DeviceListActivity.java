@@ -1,6 +1,8 @@
-package com.example.android.BluetoothChat;
+package com.example.android.WeChatBluetooth;
 
 import java.util.Set;
+
+import com.example.android.BluetoothChat.R;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
