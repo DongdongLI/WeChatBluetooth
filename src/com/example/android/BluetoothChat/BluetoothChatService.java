@@ -53,7 +53,7 @@ public class BluetoothChatService {
         mState = state;
 
         //update UI as needed
-        mHandler.obtainMessage(BluetoothChat.MESSAGE_STATE_CHANGE, state, -1).sendToTarget();
+        mHandler.obtainMessage(ChatActivity.MESSAGE_STATE_CHANGE, state, -1).sendToTarget();
     }
 
     public synchronized int getState() {
@@ -106,9 +106,9 @@ public class BluetoothChatService {
         mConnectedThread.start();
 
         // send device name back to UI
-        Message msg = mHandler.obtainMessage(BluetoothChat.MESSAGE_DEVICE_NAME);
+        Message msg = mHandler.obtainMessage(ChatActivity.MESSAGE_DEVICE_NAME);
         Bundle bundle = new Bundle();
-        bundle.putString(BluetoothChat.DEVICE_NAME, device.getName());
+        bundle.putString(ChatActivity.DEVICE_NAME, device.getName());
         msg.setData(bundle);
         mHandler.sendMessage(msg);
 
@@ -139,9 +139,9 @@ public class BluetoothChatService {
     	//clean up the mess after failure
         setState(STATE_LISTEN);
         // ask UI to make a toast
-        Message msg = mHandler.obtainMessage(BluetoothChat.MESSAGE_TOAST);
+        Message msg = mHandler.obtainMessage(ChatActivity.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString(BluetoothChat.TOAST, "Unable to connect device"); // the toast string
+        bundle.putString(ChatActivity.TOAST, "Unable to connect device"); // the toast string
         msg.setData(bundle);
         mHandler.sendMessage(msg);
     }
@@ -149,9 +149,9 @@ public class BluetoothChatService {
     
     private void connectionLost() {
         setState(STATE_LISTEN);
-        Message msg = mHandler.obtainMessage(BluetoothChat.MESSAGE_TOAST);
+        Message msg = mHandler.obtainMessage(ChatActivity.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString(BluetoothChat.TOAST, "Device connection was lost");
+        bundle.putString(ChatActivity.TOAST, "Device connection was lost");
         msg.setData(bundle);
         mHandler.sendMessage(msg);
     }
@@ -310,7 +310,7 @@ public class BluetoothChatService {
                 try {
                     // keep reading 
                 	bytes = mmInStream.read(buffer);
-                    mHandler.obtainMessage(BluetoothChat.MESSAGE_READ, bytes, -1, buffer)
+                    mHandler.obtainMessage(ChatActivity.MESSAGE_READ, bytes, -1, buffer)
                             .sendToTarget();
                     // show the message on UI
                 } catch (IOException e) {
@@ -325,7 +325,7 @@ public class BluetoothChatService {
         public void write(byte[] buffer) {
             try {
                 mmOutStream.write(buffer);
-                mHandler.obtainMessage(BluetoothChat.MESSAGE_WRITE, -1, -1, buffer)
+                mHandler.obtainMessage(ChatActivity.MESSAGE_WRITE, -1, -1, buffer)
                         .sendToTarget();
                 
             } catch (IOException e) {

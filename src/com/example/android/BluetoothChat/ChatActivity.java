@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class BluetoothChat extends Activity {
+public class ChatActivity extends Activity {
     private static final String TAG = "BluetoothChat";
     private static final boolean D = true;
 
